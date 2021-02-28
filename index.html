@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="JoesStyle.css">
+	<title>Joe's HotDogs</title>
+</head>
+
+<body>
+	<div class = 'content'>
+		<h1> Joe's Hot Dogs! </h1>
+		<p id= "intro"> <strong> Welcome to Joe's Hot Dogs! We sell hotdogs for $3.25, french fries for $2.00, and sodas for $1.50! </strong> </p>
+
+		<div class="order">
+			<h2 id="orderhead"> Your order details: </h2>
+
+			<script language="javascript">
+				document.write("<div class= orderInfo>")
+					document.write("<div class= leftColumn>");
+
+						var hotDogs = parseInt(prompt ("How many hot dogs do you want?", ""));
+						var frenchFries = parseInt(prompt ("How many orders of french fries do you want?", ""));
+						var drinks = parseInt(prompt ("How many sodas do you want?", ""));
+
+						document.write ("You have ordered:<ul>" + "<li>Hot Dogs: " + hotDogs + "<li>French Fries: " + frenchFries + "<li>Sodas: " + drinks + "</ul>");
+
+						var subTotal = 3.25*hotDogs + 2.00*frenchFries + 1.50*drinks;
+
+						document.write ("Your subtotal is $" + subTotal.toFixed(2) + ".");
+
+					document.write("</div>");
+
+					document.write("<div class=rightColumn>");
+
+						if(subTotal >= 20)
+						{
+							subTotal*=.9;
+							document.write("The 10% discount was applied to your order! Now your subtotal is $" + subTotal.toFixed(2)  + ".");
+						}
+
+						else
+						{
+							document.write("The 10% discount was not applied to your order. (Subtotal must be above $20).");
+						}
+						
+						var total = subTotal*1.0625;
+
+						document.write("<br>");
+						document.write("<br>");
+
+						document.write("The state tax applied is 6.25%.");
+						
+						document.write("<p id= 'total'> Your total is $" + total.toFixed(2)  + ".");
+
+					document.write("</div>");
+				document.write("</div>");
+				
+			</script>
+		</div>
+	</div>
+</body>
+</html>

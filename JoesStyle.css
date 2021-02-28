@@ -1,0 +1,65 @@
+body {
+	margin: 0px; 
+	background-color: #ccffff;
+	background-image: url("background.jpg");
+	background-size: 30%;
+}
+
+.content {
+	color: #654321;
+    font-family:"Goudy Old Style", Garamond, 
+    	"Big Caslon", "Times New Roman", serif;
+	font-size: 150%;
+}
+
+h1 {
+	color: #654321;
+    font-family:"Courier New", Courier,
+   	 	"Lucida Sans Typewriter", 
+    	"Lucida Typewriter", monospace; 
+	font-size: 200%;
+	margin: 0%;
+	padding: 1%;
+	text-align: center;
+}
+
+#intro {
+	background-color: #fff797;
+}
+
+#orderhead {
+	margin: 0;
+	padding-bottom: 2%;
+}
+
+.order {
+	background-color: #ffff;
+	padding: 1%;
+}
+
+.orderInfo {
+	display: flex;
+}
+
+.leftColumn{
+	flex: 50%;
+	padding-right: 5%;
+	padding-left: 4%;
+}
+
+.rightColumn {
+	flex: 50%;
+	padding-left: 5%;
+	padding-right: 4%;
+}
+
+#total {
+	font-weight: 700;
+	font-size: 150%;
+}
+
+
+
+
+
+	
