@@ -3,57 +3,123 @@
 <head>
 	<link rel="stylesheet" href="JoesStyle.css">
 	<title>Joe's HotDogs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
 	<div class = 'content'>
 		<h1> Joe's Hot Dogs! </h1>
-		<p id= "intro"> <strong> Welcome to Joe's Hot Dogs! We sell hotdogs for $3.25, french fries for $2.00, and sodas for $1.50! </strong> </p>
 
+		<div class="table">
+			<table>
+				<tr>
+					<td>
+						<select id="selectDogs">
+							<option>0</option>
+				   			<option>1</option>
+				    		<option>2</option>
+				    		<option>3</option>
+				    		<option>4</option>
+				    		<option>5</option>
+				    		<option>10</option>
+				    		<option>15</option>
+				    		<option>20</option>
+						</select>
+					<td>
+					<td>Hot Dogs <td>
+					<td>$3.25<td>
+				</tr>
+				<tr>
+					<td>
+						<select id='selectFries'>
+							<option>0</option>
+				   			<option>1</option>
+				    		<option>2</option>
+				    		<option>3</option>
+				    		<option>4</option>
+				    		<option>5</option>
+				    		<option>10</option>
+				    		<option>15</option>
+				    		<option>20</option>
+						</select>
+					<td>
+					<td>French Fries <td>
+					<td>$2.00<td>
+				</tr>
+				<tr>
+					<td>
+						<select id='selectSodas'>
+							<option>0</option>
+				   			<option>1</option>
+				    		<option>2</option>
+				    		<option>3</option>
+				    		<option>4</option>
+				    		<option>5</option>
+				    		<option>10</option>
+				    		<option>15</option>
+				    		<option>20</option>
+						</select>
+					<td>
+					<td>Sodas <td>
+					<td>$1.50<td>
+				</tr>
+			</table>
+		</div>
 		<div class="order">
 			<h2 id="orderhead"> Your order details: </h2>
 
+				<div class= "orderInfo">
+					<div class= "leftColumn">
+						You have ordered:
+						<br><br>
+						<table>
+							<tr id="displayDogs"></tr>
+							<tr id="displayFries"></tr>
+							<tr id="displaySodas"></tr>
+						</table>
+					</div>
+					<div class=rightColumn>
+						<p id="displaySubtotal"></p>
+						<p id="apply"></p>
+						<p id='totalResult'></p>
+					</div>
+				</div>
+
+					
+
 			<script language="javascript">
-				document.write("<div class= orderInfo>")
-					document.write("<div class= leftColumn>");
 
-						var hotDogs = parseInt(prompt ("How many hot dogs do you want?", ""));
-						var frenchFries = parseInt(prompt ("How many orders of french fries do you want?", ""));
-						var drinks = parseInt(prompt ("How many sodas do you want?", ""));
+				$(document).on("change", "select", function()
+				{
+					dogNum = $("#selectDogs option:selected").val();
+					friesNum = $("#selectFries option:selected").val();
+					sodaNum = $("#selectSodas option:selected").val();
 
-						document.write ("You have ordered:<ul>" + "<li>Hot Dogs: " + hotDogs + "<li>French Fries: " + frenchFries + "<li>Sodas: " + drinks + "</ul>");
+					document.getElementById("displayDogs").innerHTML = "Hot Dogs: " + dogNum;
+					document.getElementById("displayFries").innerHTML = "French Fries: " + friesNum;
+					document.getElementById("displaySodas").innerHTML = "Sodas: " + sodaNum;
 
-						var subTotal = 3.25*hotDogs + 2.00*frenchFries + 1.50*drinks;
+					var dogTotal =  3.25 * dogNum;
+					var friesTotal =  2.00 * friesNum;
+					var sodaTotal =  1.50 * sodaNum;
 
-						document.write ("Your subtotal is $" + subTotal.toFixed(2) + ".");
+					var subTotal = dogTotal + friesTotal + sodaTotal;
+					document.getElementById("displaySubtotal").innerHTML = "Your Subtotal is $" + subTotal;
 
-					document.write("</div>");
+					if(subTotal >= 20)
+					{
+						subTotal*=.9;
+						document.getElementById("apply").innerHTML = "The 10% discount was applied to your order! Now your subtotal is $" + subTotal.toFixed(2)  + ".";
+					}
+					else
+					{
+						document.getElementById("apply").innerHTML = "The 10% discount was not applied to your order. (Subtotal must be above $20).";
+					}
 
-					document.write("<div class=rightColumn>");
+					var total = subTotal * 1.0625;
+					document.getElementById("totalResult").innerHTML = "The state tax applied is 6.25%." + "<br>" + "Your total is $" + total.toFixed(2) + ".";
+				});
 
-						if(subTotal >= 20)
-						{
-							subTotal*=.9;
-							document.write("The 10% discount was applied to your order! Now your subtotal is $" + subTotal.toFixed(2)  + ".");
-						}
-
-						else
-						{
-							document.write("The 10% discount was not applied to your order. (Subtotal must be above $20).");
-						}
-						
-						var total = subTotal*1.0625;
-
-						document.write("<br>");
-						document.write("<br>");
-
-						document.write("The state tax applied is 6.25%.");
-						
-						document.write("<p id= 'total'> Your total is $" + total.toFixed(2)  + ".");
-
-					document.write("</div>");
-				document.write("</div>");
-				
 			</script>
 		</div>
 	</div>
